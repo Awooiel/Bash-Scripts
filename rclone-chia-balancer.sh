@@ -34,9 +34,11 @@ runRSync() {
             sleep 60
         else
             if [ $count -le 9 ]; then
-                rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}0${count}
+                echo "Starting transfer ${movetarget}${foldern}0${count}"
+                rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}0${count} 2>/dev/null
             else
-                rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}${count}
+                echo "Starting transfer ${movetarget}${foldern}${count}"
+                rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}${count} 2>/dev/null
             fi
             count=$(($count + 1))
         fi
