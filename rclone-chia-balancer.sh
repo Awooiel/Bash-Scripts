@@ -29,15 +29,17 @@ runRSync() {
     count=1
     while [ $count -le ${folderc} ]; do
         i1=$(find ${origin}/*.plot -type f -printf '%p\n' | sort | head -n 1)
+        i2=$(find ${origin}/*.plot -type f -printf '%p\n %f\n' | sort | head -n 1)
+        i2=$(echo ${i2} | tr -d " \t\n\r")
         if [ "$i1" = "error" ] || [ -z "$i1" ]; then
             echo "No Plots to Upload, waiting 60 seconds"
             sleep 60
         else
             if [ $count -le 9 ]; then
-                echo "Starting transfer ${movetarget}${foldern}0${count}"
+                echo "Starting transfer to ${movetarget}${foldern}0${count}/${i2}"
                 rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}0${count} 2>/dev/null
             else
-                echo "Starting transfer ${movetarget}${foldern}${count}"
+                echo "Starting transfer to ${movetarget}${foldern}${count}/${i2}"
                 rsync --preallocate --remove-source-files --skip-compress plot --whole-file ${i1} ${movetarget}${foldern}${count} 2>/dev/null
             fi
             count=$(($count + 1))
