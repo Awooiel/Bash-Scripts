@@ -16,7 +16,7 @@ cachel=/mnt/applications/appdata/RClone-Cache/Dropbox/
 # RClone local cache max size (read)
 cachesz=950G
 # RClone local cache max age (read)
-agec=99999999999h
+agec=30d
 # RClone chunk size (read)
 chunksz=64K
 # How many RClone sub folders? (read)
