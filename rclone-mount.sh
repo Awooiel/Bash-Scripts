@@ -26,7 +26,7 @@ subfc=16
 # RClone local mount location (write)
 mountw=/mnt/disks/dropbox/01/write/
 # RClone local cache location (write)
-cachelw=/mnt/user/chia-storage/Cache/
+cachelw=/mnt/user/Cache/
 # RClone local cache max size (write)
 cacheszw=11000G
 # RClone max uploads at once (write)
